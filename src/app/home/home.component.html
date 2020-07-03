@@ -1,0 +1,44 @@
+<h1>Welcome To homepage</h1>
+
+<br/>
+<h2 style="color: rgb(47, 0, 255)">Hey {{username}} , Your password is {{password}}</h2>
+<h1>Countries Details</h1> 
+<div class="d-flex justify-content-center"> 
+	
+<!--div class="spinner-border" role="status" > 
+	<span class="sr-only" id="loading">Loading...</span> 
+</div--> 
+</div> 
+<div class="row">
+	<input type="text" placeholder="Search" [(ngModel)]="searchtext"/> 
+
+</div>
+<table style="color: rgb(211, 19, 109)" class="table" id='tab'> 
+	<thead> 
+	<tr> 
+		<th scope="col">Name</th> 
+		<th scope="col">Capital</th> 
+        <th scope="col">Region</th> 
+        <th scope="col">Sub-Region</th> 
+        <th scope="col">Area</th> 
+		<th scope="col">Population</th> 
+
+	</tr> 
+	</thead> 
+	<tbody> 
+	<tr *ngFor ="let post of Posts |filter :searchtext |paginate:{itemsPerPage:20, currentPage:p}">
+		<!--td>{{i}}</td-->
+		<td>{{post.name}}</td>
+        <td>{{post.capital}}</td>
+        <td>{{post.region}}</td>
+        <td>{{post.subregion}}</td>
+        <td>{{post.area}}</td>
+		<td>{{post.population}}</td>
+		
+	</tr> 
+	</tbody> 
+	<pagination-controls (pageChange)="p = $event"></pagination-controls> 
+</table>					 
+
+
+<button class="btn-primary" (click)="logout()">Logout</button>
